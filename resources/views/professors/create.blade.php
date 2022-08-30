@@ -33,6 +33,64 @@
                         @error('email') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
+
+
+                    <div class="mb-4">
+                        <label for="textuniversity"
+                               class="block mb-2 text-sm font-bold text-gray-700">University</label>
+                        <input type="text"
+                               class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                               name="university"
+                               placeholder="Enter university">
+                        @error('university') <span class="text-red-500">{{ $message }}
+                    </span>@enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="textfeildofstudy"
+                               class="block mb-2 text-sm font-bold text-gray-700">Feild Of Study</label>
+                        <input type="text"
+                               class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                               name="feildofstudy"
+                               placeholder="Enter feild of study">
+                        @error('feildofstudy') <span class="text-red-500">{{ $message }}
+                    </span>@enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="textstate"
+                               class="block mb-2 text-sm font-bold text-gray-700">State</label>
+                        <input type="text"
+                               class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                               name="state"
+                               placeholder="Enter state">
+                        @error('state') <span class="text-red-500">{{ $message }}
+                    </span>@enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="textcity"
+                               class="block mb-2 text-sm font-bold text-gray-700">City</label>
+                        <input type="text"
+                               class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                               name="city"
+                               placeholder="Enter city">
+                        @error('city') <span class="text-red-500">{{ $message }}
+                    </span>@enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="textcountry"
+                               class="block mb-2 text-sm font-bold text-gray-700">Country</label>
+                        <input type="text"
+                               class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                               name="country"
+                               placeholder="Enter country">
+                        @error('country') <span class="text-red-500">{{ $message }}
+                    </span>@enderror
+                    </div>
+
+
                     <div>
                         <button type="submit"
                                 class="inline-flex items-center px-4 py-2 my-3 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25">
