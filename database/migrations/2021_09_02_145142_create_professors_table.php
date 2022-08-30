@@ -15,9 +15,16 @@ class CreateProfessorsTable extends Migration
     {
         Schema::create('professors', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('continent_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('field_of_study_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('professor_title_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
+            $table->timestamps();
         });
     }
 

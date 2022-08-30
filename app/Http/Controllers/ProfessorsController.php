@@ -12,9 +12,18 @@ class ProfessorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $user_id;
+    public function __construct(Request $request)
+    {
+        if ($request->phone) {
+            $request['phone'] = numberFarsiToEnlish($request->phone);
+        }
+    }
     public function index()
     {
-        $professors = Professor::all();
+        $user_id = Auth()->user()->id;
+        $professors = Professor::where('user_id',intval($user_id))->get();
+//        dd($professors);
         return view('professors.index', compact('professors'));
     }
 
@@ -36,11 +45,13 @@ class ProfessorsController extends Controller
      */
     public function store(Request $request)
     {
+        $user_id = Auth()->user()->id;
         $request->validate([
             'name' => 'required',
             'email' => 'unique:professors,email',
         ]);
         Professor::create([
+            'user_id' => $user_id,
             'name' => $request->name,
             'email' => $request->email
         ]);
