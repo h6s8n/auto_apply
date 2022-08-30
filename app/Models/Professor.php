@@ -10,9 +10,14 @@ class Professor extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'user_id',
+        'continent_id',
+        'city_id',
+        'country_id',
+        'field_of_study_id',
+        'user_id',
+        'professor_title_id',
+        'name',
         'email',
-        'password',
     ];
 }
