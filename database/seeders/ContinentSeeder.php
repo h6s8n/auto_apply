@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Continent;
 use Illuminate\Database\Seeder;
 
 class ContinentSeeder extends Seeder
@@ -13,6 +14,18 @@ class ContinentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $continent = [
+            [
+                'name' => 'North America'
+            ],
+            [
+                'name' => 'South America'
+            ],
+            [
+                'name' => 'Europe'
+            ],
+
+        ];
+        Continent::insert($continent);
     }
 }

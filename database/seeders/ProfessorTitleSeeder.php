@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProfessorTitle;
 use Illuminate\Database\Seeder;
 
 class ProfessorTitleSeeder extends Seeder
@@ -13,6 +14,18 @@ class ProfessorTitleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $professorTitleSeeder = [
+            [
+                'name' => 'Full Professor'
+            ],
+            [
+                'name' => 'Associate Professor'
+            ],
+            [
+                'name' => 'Assistant Professor'
+            ],
+
+        ];
+        ProfessorTitle::insert($professorTitleSeeder);
     }
 }
