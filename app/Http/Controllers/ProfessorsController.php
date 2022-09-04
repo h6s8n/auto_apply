@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Continent;
 use App\Models\Professor;
+use App\Models\ProfessorTitle;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ProfessorsController extends Controller
@@ -30,30 +35,43 @@ class ProfessorsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
-        return view('professors.create');
+        $professorTitles = ProfessorTitle::all();
+        $continents = Continent::all();
+        return view('professors.create',compact('professorTitles','continents'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $user_id = Auth()->user()->id;
         $request->validate([
             'name' => 'required',
             'email' => 'unique:professors,email',
         ]);
+
         Professor::create([
             'user_id' => $user_id,
-            'name' => $request->name,
-            'email' => $request->email
+            "continent" => $request->continent,
+            "professor_title" => $request->professortitle,
+            "name" => $request->name,
+            "lastname" => $request->lastname,
+            "email" => $request->email,
+            "university" => $request->university,
+            "feild_of_study" => $request->feildofstudy,
+            "research_interest" => $request->researchinterest,
+            "state" => $request->state,
+            "city" => $request->city,
+            "country" => $request->country,
         ]);
         return redirect()->route('professors.index')
             ->with('success','Professor created successfully.');
