@@ -18,7 +18,7 @@
                         <label for="textcontinent"
                                class="block mb-2 text-sm font-bold text-gray-700">Continent
                         </label>
-                        <select name="continent"
+                        <select name="continent_id"
                                 class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                 aria-label="Default select example">
                             <option selected>select</option>
@@ -26,7 +26,7 @@
                             <option value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach
                         </select>
-                        @error('continent')
+                        @error('continent_id')
                         <span class="text-red-500">{{ $message }}
                         </span>
                         @enderror
@@ -36,15 +36,15 @@
                         <label for="textprofessortitle"
                                class="block mb-2 text-sm font-bold text-gray-700">Professor Title
                         </label>
-                        <select name="professortitle"
+                        <select name="professor_title_id"
                                 class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                 aria-label="Default select example">
                             <option selected>select</option>
                             @foreach($professorTitles as $item)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                <option  value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach
                         </select>
-                        @error('professortitle')
+                        @error('professor_title_id')
                         <span class="text-red-500">{{ $message }}
                         </span>
                         @enderror
@@ -56,18 +56,21 @@
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                name="name"
+                               value="{{old('name')}}"
                                placeholder="Enter name">
                         @error('name') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
+
                     <div class="mb-4">
-                        <label for="textlastname"
+                        <label for="last_name"
                                class="block mb-2 text-sm font-bold text-gray-700">Last Name</label>
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                               name="lastname"
+                               name="last_name"
+                               value="{{old('last_name')}}"
                                placeholder="Enter lastname">
-                        @error('lastname') <span class="text-red-500">{{ $message }}
+                        @error('last_name') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
 
@@ -77,20 +80,21 @@
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                name="email"
+                               value="{{old('email')}}"
                                placeholder="Enter email">
                         @error('email') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
-
 
                     <div class="mb-4">
                         <label for="textuniversity"
                                class="block mb-2 text-sm font-bold text-gray-700">University</label>
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                               name="university"
+                               name="university_name"
+                               value="{{old('university_name')}}"
                                placeholder="Enter university">
-                        @error('university') <span class="text-red-500">{{ $message }}
+                        @error('university_name') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
 
@@ -99,9 +103,10 @@
                                class="block mb-2 text-sm font-bold text-gray-700">Feild Of Study</label>
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                               name="feildofstudy"
-                               placeholder="Enter feild of study">
-                        @error('feildofstudy') <span class="text-red-500">{{ $message }}
+                               name="field_of_study"
+                               value="{{old('field_of_study')}}"
+                               placeholder="Enter field of study">
+                        @error('field_of_study') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
 
@@ -110,9 +115,10 @@
                                class="block mb-2 text-sm font-bold text-gray-700">Research Interest</label>
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                               name="researchinterest"
+                               name="research_interest"
+                               value="{{old('research_interest')}}"
                                placeholder="Enter research interest">
-                        @error('researchinterest') <span class="text-red-500">{{ $message }}
+                        @error('research_interest') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
 
@@ -121,9 +127,10 @@
                                class="block mb-2 text-sm font-bold text-gray-700">State</label>
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                               name="state"
+                               name="state_name"
+                               value="{{old('state_name')}}"
                                placeholder="Enter state">
-                        @error('state') <span class="text-red-500">{{ $message }}
+                        @error('state_name') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
 
@@ -132,9 +139,10 @@
                                class="block mb-2 text-sm font-bold text-gray-700">City</label>
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                               name="city"
+                               name="city_name"
+                               value="{{old('city_name')}}"
                                placeholder="Enter city">
-                        @error('city') <span class="text-red-500">{{ $message }}
+                        @error('city_name') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
 
@@ -143,12 +151,12 @@
                                class="block mb-2 text-sm font-bold text-gray-700">Country</label>
                         <input type="text"
                                class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                               name="country"
+                               name="country_name"
+                               value="{{old('country_name')}}"
                                placeholder="Enter country">
-                        @error('country') <span class="text-red-500">{{ $message }}
+                        @error('country_name') <span class="text-red-500">{{ $message }}
                     </span>@enderror
                     </div>
-
 
                     <div>
                         <button type="submit"

@@ -17,7 +17,7 @@ class Professor extends Model
         'last_name',
         'email',
         'university_name',
-        'field_of_study_name',
+        'field_of_study',
         'research_interest',
         'state_name',
         'city_name',

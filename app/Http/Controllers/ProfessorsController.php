@@ -8,26 +8,30 @@ use App\Models\ProfessorTitle;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProfessorsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     protected $user_id;
+
     public function __construct(Request $request)
     {
         if ($request->phone) {
             $request['phone'] = numberFarsiToEnlish($request->phone);
         }
     }
+
     public function index()
     {
         $user_id = Auth()->user()->id;
-        $professors = Professor::where('user_id',intval($user_id))->get();
+        $professors = Professor::where('user_id', intval($user_id))->get();
 //        dd($professors);
         return view('professors.index', compact('professors'));
     }
@@ -41,18 +45,18 @@ class ProfessorsController extends Controller
     {
         $professorTitles = ProfessorTitle::all();
         $continents = Continent::all();
-        return view('professors.create',compact('professorTitles','continents'));
+        return view('professors.create', compact('professorTitles', 'continents'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param \Illuminate\Http\Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-//        dd($request->all());
+
         $user_id = Auth()->user()->id;
         $request->validate([
             'name' => 'required',
@@ -61,72 +65,92 @@ class ProfessorsController extends Controller
 
         Professor::create([
             'user_id' => $user_id,
-            "continent" => $request->continent,
-            "professor_title" => $request->professortitle,
+            "continent_id" => $request->continent_id,
+            "professor_title_id" => $request->professor_title_id,
             "name" => $request->name,
-            "lastname" => $request->lastname,
+            "last_name" => $request->last_name,
             "email" => $request->email,
-            "university" => $request->university,
-            "feild_of_study" => $request->feildofstudy,
-            "research_interest" => $request->researchinterest,
-            "state" => $request->state,
-            "city" => $request->city,
-            "country" => $request->country,
+            "university_name" => $request->university_name,
+            "field_of_study" => $request->field_of_study,
+            "research_interest" => $request->research_interest,
+            "state_name" => $request->state_name,
+            "city_name" => $request->city_name,
+            "country_name" => $request->country_name,
         ]);
+
         return redirect()->route('professors.index')
-            ->with('success','Professor created successfully.');
+            ->with('success', 'Professor created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Professor  $professors
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Professor $professors
+     * @return Response
      */
     public function show(Professor $professor)
     {
-        return view('professors.show',compact('professor'));
+        return view('professors.show', compact('professor'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Professor  $professors
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Professor $professors
+     * @return Response
      */
     public function edit(Professor $professor)
     {
-        return view('professors.edit',compact('professor'));
+        $professorTitles = ProfessorTitle::all();
+        $continents = Continent::all();
+        return view('professors.edit', compact('professor', 'professorTitles', 'continents'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Professor  $professors
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Professor $professors
+     * @return RedirectResponse
      */
     public function update(Request $request, Professor $professor)
     {
+
+
+
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:professors,email',
+            "continent_id" => 'required',
+            "professor_title_id" => 'required',
+            "name" => 'required',
+            "last_name" => 'required',
+            "email" => 'required',
+            "university_name" => 'required',
+            "field_of_study" => 'required',
+            "research_interest" => 'required',
+            "state_name" => 'required',
+            "city_name" => 'required',
+            "country_name" => 'required',
+
         ]);
+
         $professor->update($request->all());
+
         return redirect()->route('professors.index')
-            ->with('success','Professor updated successfully');
+            ->with('success', 'Professor updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Professor  $professors
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Professor $professors
+     * @return RedirectResponse
      */
     public function destroy(Professor $professor)
     {
         $professor->delete();
         return redirect()->route('professors.index')
-            ->with('success','Professor deleted successfully');
+            ->with('success', 'Professor deleted successfully');
     }
 }
