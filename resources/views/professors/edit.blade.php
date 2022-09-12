@@ -87,6 +87,18 @@
                     </div>
 
                     <div class="mb-4">
+                        <label for="textlink"
+                               class="block mb-2 text-sm font-bold text-gray-700">Link</label>
+                        <input type="text"
+                               class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                               name="link"
+                               value="{{$professor->link}}"
+                               placeholder="Enter link">
+                        @error('link') <span class="text-red-500">{{ $message }}
+                    </span>@enderror
+                    </div>
+
+                    <div class="mb-4">
                         <label for="textuniversity"
                                class="block mb-2 text-sm font-bold text-gray-700">University</label>
                         <input type="text"

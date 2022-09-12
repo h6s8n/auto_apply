@@ -22,6 +22,7 @@ class CreateProfessorsTable extends Migration
             $table->string('name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
+            $table->string('link')->unique();
             $table->string('university_name')->nullable();
             $table->string('field_of_study')->nullable();
             $table->string('research_interest')->nullable();

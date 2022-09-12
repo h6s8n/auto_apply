@@ -25,6 +25,7 @@
                     <tr class="bg-gray-100">
                         <th class="px-4 py-2 border">Name</th>
                         <th class="px-4 py-2 border">Email</th>
+                        <th class="px-4 py-2 border">Link</th>
                         <th class="px-4 py-2 border">Action</th>
                     </tr>
                     </thead>
@@ -32,9 +33,10 @@
                     @if(!empty($professors))
                         @foreach($professors as $row)
                             <tr>
-                                <td class="px-4 py-2 border">{{ $row->name }}</td>
-                                <td class="px-4 py-2 border">{{ $row->email }}</td>
-                                <td class="px-4 py-2 border">
+                                <td class="px-1 py-2 border">{{ $row->name }}</td>
+                                <td class="px-1 py-2 border">{{ $row->email }}</td>
+                                <td class="px-1 py-2 border">{{ $row->link }}</td>
+                                <td class="px-1 py-2 border">
                                     <form action="{{ route('professors.destroy', $row->id) }}" method="POST">
                                         <a href="{{ route('professors.show', $row->id) }}" class="inline-flex items-center px-4 py-2 mx-2 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25">
                                             Show
